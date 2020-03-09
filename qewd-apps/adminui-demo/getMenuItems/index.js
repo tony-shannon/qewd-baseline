@@ -15,7 +15,7 @@ module.exports = function(messageObj, session, send, finished) {
       {
         componentName: 'adminui-topbar-navbar-menu-item',
         state: {
-          title: 'Option 2a',
+          title: 'Option 2',
           icon: 'cogs',
           itemId: 2
         },

@@ -17,7 +17,7 @@ module.exports = function(messageObj, session, send, finished) {
         componentName: 'adminui-topbar-navbar-dropdown-item',
         state: {
           heading: 'February 10, 2020',
-          text: 'Some useful information 4Ub 2Do3',
+          text: 'Some useful information',
           icon: 'donate',
           colour: 'success',
           itemId: 2
