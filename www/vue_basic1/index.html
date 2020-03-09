@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cach&eacute; &amp; Vue.js news</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h3 class="text-center">Cach&eacute; &amp; Vue.js news</h3> 
+      <div class="columns medium-3" v-for="post in posts">
+        <div class="card">
+          <div class="card-divider">
+            {{ post.title }}
+          </div>
+          <div class="card-section">
+            <p>{{ post.body }}.</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button class="button" style="display:block;margin:auto;" @click="getPostsViaREST">Get posts via REST</button>
+    </div>
+  </body>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          posts: [
+            {title: "My very first Vue.js post", body: "lorem ipsum some test dimpsum"},
+            {title: "My second Vue.js post", body: "lorem ipsum some test dimpsum"},
+            {title: "My third Vue.js post", body: "lorem ipsum some test dimpsum"}
+          ]
+        },
+        methods: {
+          getPostsViaREST: function() {
+            axios.get("https://8t4vl.sse.codesandbox.io/posts") // for jsonplaceholder
+              .then(response => {this.posts = response.data})
+          }
+        }
+      });    
+    </script>
+</html>
