@@ -1,0 +1,14 @@
+{
+  "name": "vue_qewd1",
+  "version": "1.0.0",
+  "description": "for vue qewd stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TS",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.4.1"
+  }
+}
