@@ -1,5 +1,20 @@
 [
   {
+        "uri": "/api/hello",
+        "method": "GET",
+        "handler": "hello_world"
+      },
+    {
+      "uri": "/api/hello",
+      "method": "POST",
+      "handler": "hello_world_post"
+    },
+   {
+        "uri": "/api/person/:lastName/town/:town",
+        "method": "GET",
+        "handler": "get_people"
+      },
+  {
     "uri": "/jsdb/viewer/refresh",
     "method": "GET",
     "handler": "qewd_refresh_viewer"
