@@ -1,0 +1,20 @@
+{
+  "qewd_up": true,
+  "qewd": {
+    "bodyParser": "body-parser",
+    "port": "8080",
+    "poolSize": "3",
+    "managementPassword": "keepThisSecret!",
+    "ssl":
+      {
+        "enabled": false,
+
+            "keyFilePath": "/opt/qewd/mapped/localhost.key",
+
+            "certFilePath": "/opt/qewd/mapped/localhost.crt"
+      }
+    },
+    "jwt": {
+    "secret": "ca71af3c-bd61-4f7b-9c05-38281cee1698"
+  }
+}
