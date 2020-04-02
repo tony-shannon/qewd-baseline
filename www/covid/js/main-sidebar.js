@@ -1,0 +1,51 @@
+export function main_sidebar_assembly() {
+
+  let component = [
+    {
+      componentName: 'adminui-sidebar-divider',
+      state: {
+        isTop: true
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      if: function(context) {
+        return (context.role === 'admin');
+      },
+      state: {
+        title: 'User Admin',
+        icon: 'admin',
+        contentPage: 'admin'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'People',
+        icon: 'users',
+        contentPage: 'people',
+        active: true
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-divider',
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Logout',
+        icon: 'power-off',
+        use_modal: 'modal-logout'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-divider',
+    },
+    {
+      componentName: 'adminui-sidebar-toggler',
+    }
+  ];
+
+  return {component};
+
+};
