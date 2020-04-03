@@ -245,7 +245,501 @@ document.addEventListener('DOMContentLoaded', function() {
 
     webComponents.addComponent('people', crud_assembly(QEWD, peoplePageState));
 
+    let OrgPageState = {
+      assemblyName: 'orgs',
+      name: 'orgs',
+      title: 'Organisations',
+      summary: {
+        title: 'Organisations in your area',
+        titleColour: 'info',
+        btnIcon: 'user-plus',
+        btnColour: 'success',
+        btnTooltip: 'Add a New Organisation',
+        headers: ['Org Name', 'Contact Name', 'Postcode'],
+        data_properties: ['firstName', 'lastName', 'postcode'],
+        qewd: {
+          getSummary: 'getPeople',
+          getDetail: 'getPersonInfo',
+          delete: 'deletePerson'
+        },
+        rowBtnIcon: 'user-edit',
+        rowBtnColour: 'info',
+        enableDelete: function() {
+          return (this.context.role === 'admin');
+        },
+        disableAdd: function() {
+          return (this.context.role !== 'admin');
+        },
+        deleteConfirmText: function() {
+          return this.row.firstName + ' ' + this.row.lastName;
+        }
+      },
+      detail: {
+        cardWidth: '500px',
+        newRecordTitle: 'Enter New Organisation',
+        titleColour: 'info',
+        disableEdit: function() {
+          return (this.context.role !== 'admin');
+        },
+        btnIcon: 'user-cog',
+        //btnColour: 'success',
+        //btnTooltip: 'Edit Details',
+        title_data_property: function() {
+          return this.record.firstName + ' ' + this.record.lastName;
+        },
+        fields: [
+          {
+            name: 'firstName',
+            data_property: 'firstName',
+            label: 'Organisation Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'lastName',
+            data_property: 'lastName',
+            label: 'Contact Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'email',
+            data_property: 'email',
+            label: 'Email',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'phone',
+            data_property: 'phone',
+            label: 'Telephone',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'gender',
+            data_property: 'gender',
+            label: 'Type',
+            type: 'select',
+            labelWidth: 4,
+            options: [
+              {text: 'Big', value: 'B'},
+              {text: 'Small', value: 'S'},
+              {text: 'Medium', value: 'M'}
+            ]
+          },
+          {
+            name: 'yob',
+            data_property: 'yob',
+            label: 'Year of Setup',
+            type: 'number',
+            placeholder: 'Enter Year of Setup',
+            labelWidth: 4
+          },
+          {
+            name: 'address1',
+            data_property: 'address1',
+            label: 'Address Line 1',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'address2',
+            data_property: 'address2',
+            label: 'Address Line 2',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'city',
+            data_property: 'city',
+            label: 'City/Town',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'county',
+            data_property: 'county',
+            label: 'County',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'postcode',
+            data_property: 'postcode',
+            label: 'Postcode',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'labels',
+            data_property: 'labels',
+            label: 'Labels',
+            type: 'checkboxes',
+            checkboxes: [
+              {text: 'Administrator', value: 'admin', if: function() {
+                return (this.context.role === 'admin');
+              }},
+              {text: 'Police', value: 'police'},
+              {text: 'Healthcare', value: 'healthcare'},
+              {text: 'Shop', value: 'shop'},
+              {text: 'Volunteer Org', value: 'volunteer_org'},
+              {text: 'Pharmacy', value: 'pharmacy'}
+            ]
+          },
+          {
+            name: 'comments',
+            data_property: 'comments',
+            label: 'Comments',
+            type: 'textarea',
+            labelWidth: 4,
+            height: 6
+          }
+        ]
+      },
+      update: {
+        btnText: 'Save',
+        btnColour: 'warning',
+        qewd: {
+          save: 'updatePerson'
+        }
+      }
+    };
 
+    webComponents.addComponent('orgs', crud_assembly(QEWD, OrgPageState));
+
+
+    let TasksPageState = {
+      assemblyName: 'tasks',
+      name: 'tasks',
+      title: 'Tasks',
+      summary: {
+        title: 'Tasks to do in your area',
+        titleColour: 'info',
+        btnIcon: 'user-plus',
+        btnColour: 'success',
+        btnTooltip: 'Add a New Task',
+        headers: ['Org Name', 'Contact Name', 'Postcode'],
+        data_properties: ['firstName', 'lastName', 'postcode'],
+        qewd: {
+          getSummary: 'getPeople',
+          getDetail: 'getPersonInfo',
+          delete: 'deletePerson'
+        },
+        rowBtnIcon: 'user-edit',
+        rowBtnColour: 'info',
+        enableDelete: function() {
+          return (this.context.role === 'admin');
+        },
+        disableAdd: function() {
+          return (this.context.role !== 'admin');
+        },
+        deleteConfirmText: function() {
+          return this.row.firstName + ' ' + this.row.lastName;
+        }
+      },
+      detail: {
+        cardWidth: '500px',
+        newRecordTitle: 'Enter New Task',
+        titleColour: 'info',
+        disableEdit: function() {
+          return (this.context.role !== 'admin');
+        },
+        btnIcon: 'user-cog',
+        //btnColour: 'success',
+        //btnTooltip: 'Edit Details',
+        title_data_property: function() {
+          return this.record.firstName + ' ' + this.record.lastName;
+        },
+        fields: [
+          {
+            name: 'firstName',
+            data_property: 'firstName',
+            label: 'Organisation Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'lastName',
+            data_property: 'lastName',
+            label: 'Contact Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'email',
+            data_property: 'email',
+            label: 'Email',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'phone',
+            data_property: 'phone',
+            label: 'Telephone',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'gender',
+            data_property: 'gender',
+            label: 'Type',
+            type: 'select',
+            labelWidth: 4,
+            options: [
+              {text: 'Big', value: 'B'},
+              {text: 'Small', value: 'S'},
+              {text: 'Medium', value: 'M'}
+            ]
+          },
+          {
+            name: 'yob',
+            data_property: 'yob',
+            label: 'Year of Setup',
+            type: 'number',
+            placeholder: 'Enter Year of Setup',
+            labelWidth: 4
+          },
+          {
+            name: 'address1',
+            data_property: 'address1',
+            label: 'Address Line 1',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'address2',
+            data_property: 'address2',
+            label: 'Address Line 2',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'city',
+            data_property: 'city',
+            label: 'City/Town',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'county',
+            data_property: 'county',
+            label: 'County',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'postcode',
+            data_property: 'postcode',
+            label: 'Postcode',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'labels',
+            data_property: 'labels',
+            label: 'Labels',
+            type: 'checkboxes',
+            checkboxes: [
+              {text: 'Administrator', value: 'admin', if: function() {
+                return (this.context.role === 'admin');
+              }},
+              {text: 'Police', value: 'police'},
+              {text: 'Healthcare', value: 'healthcare'},
+              {text: 'Shop', value: 'shop'},
+              {text: 'Volunteer Org', value: 'volunteer_org'},
+              {text: 'Pharmacy', value: 'pharmacy'}
+            ]
+          },
+          {
+            name: 'comments',
+            data_property: 'comments',
+            label: 'Comments',
+            type: 'textarea',
+            labelWidth: 4,
+            height: 6
+          }
+        ]
+      },
+      update: {
+        btnText: 'Save',
+        btnColour: 'warning',
+        qewd: {
+          save: 'updatePerson'
+        }
+      }
+    };
+
+    webComponents.addComponent('tasks', crud_assembly(QEWD, TasksPageState)); 
+
+
+    let IssuesPageState = {
+      assemblyName: 'issues',
+      name: 'issues',
+      title: 'Issues',
+      summary: {
+        title: 'Issues - for info/action',
+        titleColour: 'info',
+        btnIcon: 'user-plus',
+        btnColour: 'success',
+        btnTooltip: 'Add a New Issue',
+        headers: ['Org Name', 'Contact Name', 'Postcode'],
+        data_properties: ['firstName', 'lastName', 'postcode'],
+        qewd: {
+          getSummary: 'getPeople',
+          getDetail: 'getPersonInfo',
+          delete: 'deletePerson'
+        },
+        rowBtnIcon: 'user-edit',
+        rowBtnColour: 'info',
+        enableDelete: function() {
+          return (this.context.role === 'admin');
+        },
+        disableAdd: function() {
+          return (this.context.role !== 'admin');
+        },
+        deleteConfirmText: function() {
+          return this.row.firstName + ' ' + this.row.lastName;
+        }
+      },
+      detail: {
+        cardWidth: '500px',
+        newRecordTitle: 'Enter New Issue',
+        titleColour: 'info',
+        disableEdit: function() {
+          return (this.context.role !== 'admin');
+        },
+        btnIcon: 'user-cog',
+        //btnColour: 'success',
+        //btnTooltip: 'Edit Details',
+        title_data_property: function() {
+          return this.record.firstName + ' ' + this.record.lastName;
+        },
+        fields: [
+          {
+            name: 'firstName',
+            data_property: 'firstName',
+            label: 'Organisation Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'lastName',
+            data_property: 'lastName',
+            label: 'Contact Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'email',
+            data_property: 'email',
+            label: 'Email',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'phone',
+            data_property: 'phone',
+            label: 'Telephone',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'gender',
+            data_property: 'gender',
+            label: 'Type',
+            type: 'select',
+            labelWidth: 4,
+            options: [
+              {text: 'Big', value: 'B'},
+              {text: 'Small', value: 'S'},
+              {text: 'Medium', value: 'M'}
+            ]
+          },
+          {
+            name: 'yob',
+            data_property: 'yob',
+            label: 'Year of Setup',
+            type: 'number',
+            placeholder: 'Enter Year of Setup',
+            labelWidth: 4
+          },
+          {
+            name: 'address1',
+            data_property: 'address1',
+            label: 'Address Line 1',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'address2',
+            data_property: 'address2',
+            label: 'Address Line 2',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'city',
+            data_property: 'city',
+            label: 'City/Town',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'county',
+            data_property: 'county',
+            label: 'County',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'postcode',
+            data_property: 'postcode',
+            label: 'Postcode',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'labels',
+            data_property: 'labels',
+            label: 'Labels',
+            type: 'checkboxes',
+            checkboxes: [
+              {text: 'Administrator', value: 'admin', if: function() {
+                return (this.context.role === 'admin');
+              }},
+              {text: 'Police', value: 'police'},
+              {text: 'Healthcare', value: 'healthcare'},
+              {text: 'Shop', value: 'shop'},
+              {text: 'Volunteer Org', value: 'volunteer_org'},
+              {text: 'Pharmacy', value: 'pharmacy'}
+            ]
+          },
+          {
+            name: 'comments',
+            data_property: 'comments',
+            label: 'Comments',
+            type: 'textarea',
+            labelWidth: 4,
+            height: 6
+          }
+        ]
+      },
+      update: {
+        btnText: 'Save',
+        btnColour: 'warning',
+        qewd: {
+          save: 'updatePerson'
+        }
+      }
+    };
+
+    webComponents.addComponent('issues', crud_assembly(QEWD, IssuesPageState)); 
+
+
+    webComponents.register('issues', webComponents.components.issues);
+    webComponents.register('tasks', webComponents.components.tasks);
+    webComponents.register('orgs', webComponents.components.orgs);
     webComponents.register('people', webComponents.components.people);
     webComponents.register('admin', webComponents.components.admin);
 

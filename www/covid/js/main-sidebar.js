@@ -28,6 +28,33 @@ export function main_sidebar_assembly() {
       }
     },
     {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Orgs',
+        icon: 'users',
+        contentPage: 'orgs',
+        active: true
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Issues',
+        icon: 'users',
+        contentPage: 'issues',
+        active: true
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Tasks',
+        icon: 'users',
+        contentPage: 'tasks',
+        active: true
+      }
+    },
+    {
       componentName: 'adminui-sidebar-divider',
     },
     {
