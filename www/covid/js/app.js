@@ -258,9 +258,9 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: ['Org Name', 'Contact Name', 'Postcode'],
         data_properties: ['firstName', 'lastName', 'postcode'],
         qewd: {
-          getSummary: 'getPeople',
-          getDetail: 'getPersonInfo',
-          delete: 'deletePerson'
+          getSummary: 'getOrgs',
+          getDetail: 'getOrgInfo',
+          delete: 'deleteOrg'
         },
         rowBtnIcon: 'user-edit',
         rowBtnColour: 'info',
@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnText: 'Save',
         btnColour: 'warning',
         qewd: {
-          save: 'updatePerson'
+          save: 'updateOrg'
         }
       }
     };
@@ -422,9 +422,9 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: ['Org Name', 'Contact Name', 'Postcode'],
         data_properties: ['firstName', 'lastName', 'postcode'],
         qewd: {
-          getSummary: 'getPeople',
-          getDetail: 'getPersonInfo',
-          delete: 'deletePerson'
+          getSummary: 'getTasks',
+          getDetail: 'getTaskInfo',
+          delete: 'deleteTask'
         },
         rowBtnIcon: 'user-edit',
         rowBtnColour: 'info',
@@ -473,6 +473,144 @@ document.addEventListener('DOMContentLoaded', function() {
             type: 'text',
             labelWidth: 4
           },
+         
+          {
+            name: 'type',
+            data_property: 'type',
+            label: 'Type',
+            type: 'select',
+            labelWidth: 4,
+            options: [
+              {text: 'Big', value: 'B'},
+              {text: 'Small', value: 'S'},
+              {text: 'Medium', value: 'M'}
+            ]
+          },
+          {
+            name: 'date',
+            data_property: 'date',
+            label: 'Date of Setup',
+            type: 'number',
+            placeholder: 'Enter Date of Setup',
+            labelWidth: 4
+          },
+          {
+            name: 'address1',
+            data_property: 'address1',
+            label: 'Address Line 1',
+            type: 'text',
+            labelWidth: 4
+          },
+           
+          {
+            name: 'postcode',
+            data_property: 'postcode',
+            label: 'Postcode',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'labels',
+            data_property: 'labels',
+            label: 'Labels',
+            type: 'checkboxes',
+            checkboxes: [
+              {text: 'Administrator', value: 'admin', if: function() {
+                return (this.context.role === 'admin');
+              }},
+              {text: 'Police', value: 'police'},
+              {text: 'Healthcare', value: 'healthcare'},
+              {text: 'Shop', value: 'shop'},
+              {text: 'Volunteer Org', value: 'volunteer_org'},
+              {text: 'Pharmacy', value: 'pharmacy'}
+            ]
+          },
+          {
+            name: 'comments',
+            data_property: 'comments',
+            label: 'Comments',
+            type: 'textarea',
+            labelWidth: 4,
+            height: 6
+          }
+        ]
+      },
+      update: {
+        btnText: 'Save',
+        btnColour: 'warning',
+        qewd: {
+          save: 'updateTask'
+        }
+      }
+    };
+
+    webComponents.addComponent('tasks', crud_assembly(QEWD, TasksPageState)); 
+
+
+    let IssuesPageState = {
+      assemblyName: 'issues',
+      name: 'issues',
+      title: 'Issues',
+      summary: {
+        title: 'Issues - for info/action',
+        titleColour: 'info',
+        btnIcon: 'user-plus',
+        btnColour: 'success',
+        btnTooltip: 'Add a New Issue',
+        headers: ['IssueType', 'Name', 'Code'],
+        data_properties: ['firstName', 'lastName', 'postcode'],
+        qewd: {
+          getSummary: 'getIssues',
+          getDetail: 'getIssueInfo',
+          delete: 'deleteIssue'
+        },
+        rowBtnIcon: 'user-edit',
+        rowBtnColour: 'info',
+        enableDelete: function() {
+          return (this.context.role === 'admin');
+        },
+        disableAdd: function() {
+          return (this.context.role !== 'admin');
+        },
+        deleteConfirmText: function() {
+          return this.row.firstName + ' ' + this.row.lastName;
+        }
+      },
+      detail: {
+        cardWidth: '500px',
+        newRecordTitle: 'Enter New Issue',
+        titleColour: 'info',
+        disableEdit: function() {
+          return (this.context.role !== 'admin');
+        },
+        btnIcon: 'user-cog',
+        //btnColour: 'success',
+        //btnTooltip: 'Edit Details',
+        title_data_property: function() {
+          return this.record.firstName + ' ' + this.record.lastName;
+        },
+        fields: [
+          {
+            name: 'firstName',
+            data_property: 'firstName',
+            label: 'Problem Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'lastName',
+            data_property: 'lastName',
+            label: 'Problem 2nd Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'email',
+            data_property: 'email',
+            label: 'Email',
+            type: 'text',
+            labelWidth: 4
+          },
           {
             name: 'phone',
             data_property: 'phone',
@@ -495,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             name: 'yob',
             data_property: 'yob',
-            label: 'Year of Setup',
+            label: 'Year of Issue',
             type: 'number',
             placeholder: 'Enter Year of Setup',
             labelWidth: 4
@@ -544,11 +682,11 @@ document.addEventListener('DOMContentLoaded', function() {
               {text: 'Administrator', value: 'admin', if: function() {
                 return (this.context.role === 'admin');
               }},
-              {text: 'Police', value: 'police'},
-              {text: 'Healthcare', value: 'healthcare'},
-              {text: 'Shop', value: 'shop'},
-              {text: 'Volunteer Org', value: 'volunteer_org'},
-              {text: 'Pharmacy', value: 'pharmacy'}
+              {text: 'Diagnosis', value: 'diagnosis'},
+              {text: 'Allergy', value: 'allergy'},
+              {text: 'Medication', value: 'medication'},
+              {text: 'Investigation', value: 'investigation'},
+              {text: 'Treatment', value: 'treatment'}
             ]
           },
           {
@@ -565,30 +703,29 @@ document.addEventListener('DOMContentLoaded', function() {
         btnText: 'Save',
         btnColour: 'warning',
         qewd: {
-          save: 'updatePerson'
+          save: 'updateIssue'
         }
       }
     };
 
-    webComponents.addComponent('tasks', crud_assembly(QEWD, TasksPageState)); 
+    webComponents.addComponent('issues', crud_assembly(QEWD, IssuesPageState)); 
 
-
-    let IssuesPageState = {
-      assemblyName: 'issues',
-      name: 'issues',
-      title: 'Issues',
+    let StuffPageState = {
+      assemblyName: 'stuff',
+      name: 'stuff',
+      title: 'Stuff',
       summary: {
-        title: 'Issues - for info/action',
+        title: 'Stuff',
         titleColour: 'info',
         btnIcon: 'user-plus',
         btnColour: 'success',
-        btnTooltip: 'Add a New Issue',
+        btnTooltip: 'Add New Stuff',
         headers: ['Org Name', 'Contact Name', 'Postcode'],
         data_properties: ['firstName', 'lastName', 'postcode'],
         qewd: {
-          getSummary: 'getPeople',
-          getDetail: 'getPersonInfo',
-          delete: 'deletePerson'
+          getSummary: 'getStuff',
+          getDetail: 'getStuffInfo',
+          delete: 'deleteStuff'
         },
         rowBtnIcon: 'user-edit',
         rowBtnColour: 'info',
@@ -604,7 +741,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       detail: {
         cardWidth: '500px',
-        newRecordTitle: 'Enter New Issue',
+        newRecordTitle: 'Enter New Stuff',
         titleColour: 'info',
         disableEdit: function() {
           return (this.context.role !== 'admin');
@@ -729,14 +866,14 @@ document.addEventListener('DOMContentLoaded', function() {
         btnText: 'Save',
         btnColour: 'warning',
         qewd: {
-          save: 'updatePerson'
+          save: 'updateStuff'
         }
       }
     };
 
-    webComponents.addComponent('issues', crud_assembly(QEWD, IssuesPageState)); 
+    webComponents.addComponent('stuff', crud_assembly(QEWD, StuffPageState)); 
 
-
+    webComponents.register('stuff', webComponents.components.stuff);
     webComponents.register('issues', webComponents.components.issues);
     webComponents.register('tasks', webComponents.components.tasks);
     webComponents.register('orgs', webComponents.components.orgs);

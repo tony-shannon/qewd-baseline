@@ -48,6 +48,15 @@ export function main_sidebar_assembly() {
     {
       componentName: 'adminui-sidebar-nav-item',
       state: {
+        title: 'Stuff',
+        icon: 'users',
+        contentPage: 'stuff',
+        active: true
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
         title: 'Tasks',
         icon: 'users',
         contentPage: 'tasks',
