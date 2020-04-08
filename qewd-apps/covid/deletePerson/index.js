@@ -9,7 +9,7 @@ module.exports = function(messageObj, session, send, finished) {
     return finished({error: 'Missing or empty user id'});
   }
 
-  let doc = this.db.use('covidPerson');
+  let doc = this.db.use('dbPerson');
   let byId = doc.$(['by_id', id]);
 
   let record = byId.getDocument(true);

@@ -4,7 +4,7 @@ module.exports = function(messageObj, session, send, finished) {
     return finished({error: 'unauthenticated'});
   }
 
-  let doc = this.db.use('covidPerson');
+  let doc = this.db.use('dbPerson');
 
   let peopleDoc = doc.$('by_id');
   let results = [];

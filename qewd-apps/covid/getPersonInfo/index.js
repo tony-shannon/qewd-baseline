@@ -1,6 +1,6 @@
 module.exports = function(messageObj, session, send, finished) {
 
-  let userDoc = this.db.use('covidPerson', 'by_id', messageObj.params.id);
+  let userDoc = this.db.use('dbPerson', 'by_id', messageObj.params.id);
   let record = userDoc.getDocument(true);
 
   let labels = [];
