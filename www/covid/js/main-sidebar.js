@@ -64,6 +64,15 @@ export function main_sidebar_assembly() {
       }
     },
     {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Map',
+        icon: 'map',
+        contentPage: 'map',
+        active: true
+      }
+    },
+    {
       componentName: 'adminui-sidebar-divider',
     },
     {
