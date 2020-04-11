@@ -46,15 +46,15 @@ module.exports = function(messageObj, session, send, finished) {
   }
   else {
     let oldRecord = doc.$(['by_id', id]).getDocument(true);
-    if (oldRecord.postCode !== newRecord.postCode) {
-      doc.$(['by_postcode', oldRecord.postcode, id]).delete();
-    }
-    if (oldRecord.soundex !== newRecord.soundex) {
-      doc.$(['by_soundex', oldRecord.soundex, id]).delete();
-    }
-    if (oldRecord.email !== newRecord.email) {
-      doc.$(['by_email', oldRecord.email, id]).delete();
-    }
+    //if (oldRecord.postCode !== newRecord.postCode) {
+    //  doc.$(['by_postcode', oldRecord.postcode, id]).delete();
+    //}
+    //if (oldRecord.soundex !== newRecord.soundex) {
+    //  doc.$(['by_soundex', oldRecord.soundex, id]).delete();
+    //}
+    // if (oldRecord.email !== newRecord.email) {
+    //  doc.$(['by_email', oldRecord.email, id]).delete();
+    //}
     for (let label in oldRecord.labels) {
       if (!labels[label]) {
         doc.$(['by_labels', label, id]).delete();
@@ -66,9 +66,9 @@ module.exports = function(messageObj, session, send, finished) {
 
   doc.$(['by_id', id]).delete();
   doc.$(['by_id', id]).setDocument(newRecord);
-  doc.$(['by_postcode', newRecord.postcode, id]).value = id;
-  doc.$(['by_soundex', newRecord.soundex, id]).value = id;
-  doc.$(['by_email', newRecord.email, id]).value = id;
+  //doc.$(['by_postcode', newRecord.postcode, id]).value = id;
+  //doc.$(['by_soundex', newRecord.soundex, id]).value = id;
+  //doc.$(['by_email', newRecord.email, id]).value = id;
   for (label in labels) {
     doc.$(['by_labels', label, id]).value = id;
   }

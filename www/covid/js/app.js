@@ -9,6 +9,7 @@ import {topbar_assembly} from './topbar.js';
 import {footer_assembly} from './footer.js';
 
 import {crud_assembly} from '../../components/adminui/components/adminui-crud.js';
+import {map_page_assembly} from './map.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -256,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnColour: 'success',
         btnTooltip: 'Add a New Organisation',
         headers: ['Org Name', 'Contact Name', 'Postcode'],
-        data_properties: ['firstName', 'lastName', 'postcode'],
+        data_properties: ['orgName', 'contactName', 'postcode'],
         qewd: {
           getSummary: 'getOrgs',
           getDetail: 'getOrgInfo',
@@ -285,19 +286,19 @@ document.addEventListener('DOMContentLoaded', function() {
         //btnColour: 'success',
         //btnTooltip: 'Edit Details',
         title_data_property: function() {
-          return this.record.firstName + ' ' + this.record.lastName;
+          return this.record.orgName + ' Organisation ';
         },
         fields: [
           {
-            name: 'firstName',
-            data_property: 'firstName',
+            name: 'orgName',
+            data_property: 'orgName',
             label: 'Organisation Name',
             type: 'text',
             labelWidth: 4
           },
           {
-            name: 'lastName',
-            data_property: 'lastName',
+            name: 'contactName',
+            data_property: 'contactName',
             label: 'Contact Name',
             type: 'text',
             labelWidth: 4
@@ -317,8 +318,8 @@ document.addEventListener('DOMContentLoaded', function() {
             labelWidth: 4
           },
           {
-            name: 'gender',
-            data_property: 'gender',
+            name: 'type',
+            data_property: 'type',
             label: 'Type',
             type: 'select',
             labelWidth: 4,
@@ -327,14 +328,6 @@ document.addEventListener('DOMContentLoaded', function() {
               {text: 'Small', value: 'S'},
               {text: 'Medium', value: 'M'}
             ]
-          },
-          {
-            name: 'yob',
-            data_property: 'yob',
-            label: 'Year of Setup',
-            type: 'number',
-            placeholder: 'Enter Year of Setup',
-            labelWidth: 4
           },
           {
             name: 'address1',
@@ -419,8 +412,8 @@ document.addEventListener('DOMContentLoaded', function() {
         btnIcon: 'user-plus',
         btnColour: 'success',
         btnTooltip: 'Add a New Task',
-        headers: ['Org Name', 'Contact Name', 'Postcode'],
-        data_properties: ['firstName', 'lastName', 'postcode'],
+        headers: ['Task Name', 'Contact Name', 'Type'],
+        data_properties: ['taskName', 'contactName', 'type'],
         qewd: {
           getSummary: 'getTasks',
           getDetail: 'getTaskInfo',
@@ -449,19 +442,19 @@ document.addEventListener('DOMContentLoaded', function() {
         //btnColour: 'success',
         //btnTooltip: 'Edit Details',
         title_data_property: function() {
-          return this.record.firstName + ' ' + this.record.lastName;
+          return this.record.taskName + ' ' + this.record.type;
         },
         fields: [
           {
-            name: 'firstName',
-            data_property: 'firstName',
-            label: 'Organisation Name',
+            name: 'taskName',
+            data_property: 'taskName',
+            label: 'Task Name',
             type: 'text',
             labelWidth: 4
           },
           {
-            name: 'lastName',
-            data_property: 'lastName',
+            name: 'contactName',
+            data_property: 'contactName',
             label: 'Contact Name',
             type: 'text',
             labelWidth: 4
@@ -469,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             name: 'email',
             data_property: 'email',
-            label: 'Email',
+            label: 'Contact Email',
             type: 'text',
             labelWidth: 4
           },
@@ -489,24 +482,9 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             name: 'date',
             data_property: 'date',
-            label: 'Date of Setup',
+            label: 'Date of Task',
             type: 'number',
-            placeholder: 'Enter Date of Setup',
-            labelWidth: 4
-          },
-          {
-            name: 'address1',
-            data_property: 'address1',
-            label: 'Address Line 1',
-            type: 'text',
-            labelWidth: 4
-          },
-           
-          {
-            name: 'postcode',
-            data_property: 'postcode',
-            label: 'Postcode',
-            type: 'text',
+            placeholder: 'Enter Date of Task',
             labelWidth: 4
           },
           {
@@ -518,11 +496,11 @@ document.addEventListener('DOMContentLoaded', function() {
               {text: 'Administrator', value: 'admin', if: function() {
                 return (this.context.role === 'admin');
               }},
-              {text: 'Police', value: 'police'},
-              {text: 'Healthcare', value: 'healthcare'},
-              {text: 'Shop', value: 'shop'},
-              {text: 'Volunteer Org', value: 'volunteer_org'},
-              {text: 'Pharmacy', value: 'pharmacy'}
+              {text: 'Transport Task', value: 'transport'},
+              {text: 'Healthcare Task', value: 'healthcare'},
+              {text: 'Shopping Task', value: 'shopping'},
+              {text: 'Pharmacy Task', value: 'pharmacy'},
+              {text: 'Volunteer Task', value: 'volunteer'}
             ]
           },
           {
@@ -557,8 +535,8 @@ document.addEventListener('DOMContentLoaded', function() {
         btnIcon: 'user-plus',
         btnColour: 'success',
         btnTooltip: 'Add a New Issue',
-        headers: ['IssueType', 'Name', 'Code'],
-        data_properties: ['firstName', 'lastName', 'postcode'],
+        headers: ['Name', 'Description', 'Code'],
+        data_properties: ['issueName', 'issueDescription', 'issueCode'],
         qewd: {
           getSummary: 'getIssues',
           getDetail: 'getIssueInfo',
@@ -587,40 +565,33 @@ document.addEventListener('DOMContentLoaded', function() {
         //btnColour: 'success',
         //btnTooltip: 'Edit Details',
         title_data_property: function() {
-          return this.record.firstName + ' ' + this.record.lastName;
+          return this.record.issueName + ' issue :';
         },
         fields: [
           {
-            name: 'firstName',
-            data_property: 'firstName',
-            label: 'Problem Name',
+            name: 'issueName',
+            data_property: 'issueName',
+            label: 'Issue Name',
             type: 'text',
             labelWidth: 4
           },
           {
-            name: 'lastName',
-            data_property: 'lastName',
-            label: 'Problem 2nd Name',
+            name: 'issueDescription',
+            data_property: 'issueDescription',
+            label: 'Issue Description',
             type: 'text',
             labelWidth: 4
           },
           {
-            name: 'email',
-            data_property: 'email',
-            label: 'Email',
+            name: 'issueCode',
+            data_property: 'issueCode',
+            label: 'Code',
             type: 'text',
             labelWidth: 4
           },
           {
-            name: 'phone',
-            data_property: 'phone',
-            label: 'Telephone',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'gender',
-            data_property: 'gender',
+            name: 'type',
+            data_property: 'type',
             label: 'Type',
             type: 'select',
             labelWidth: 4,
@@ -633,46 +604,12 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             name: 'yob',
             data_property: 'yob',
-            label: 'Year of Issue',
+            label: 'Date of Issue',
             type: 'number',
-            placeholder: 'Enter Year of Setup',
+            placeholder: 'Enter Year of Issue',
             labelWidth: 4
           },
-          {
-            name: 'address1',
-            data_property: 'address1',
-            label: 'Address Line 1',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'address2',
-            data_property: 'address2',
-            label: 'Address Line 2',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'city',
-            data_property: 'city',
-            label: 'City/Town',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'county',
-            data_property: 'county',
-            label: 'County',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'postcode',
-            data_property: 'postcode',
-            label: 'Postcode',
-            type: 'text',
-            labelWidth: 4
-          },
+                
           {
             name: 'labels',
             data_property: 'labels',
@@ -873,6 +810,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     webComponents.addComponent('stuff', crud_assembly(QEWD, StuffPageState)); 
 
+    webComponents.addComponent('map_page', map_page_assembly());
+
+
     webComponents.register('stuff', webComponents.components.stuff);
     webComponents.register('issues', webComponents.components.issues);
     webComponents.register('tasks', webComponents.components.tasks);
@@ -880,13 +820,17 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('people', webComponents.components.people);
     webComponents.register('admin', webComponents.components.admin);
 
+    webComponents.register('map', webComponents.components.map_page);
+
     // create the context for running the web components
 
     let context = {
       paths: {
-        adminui: './components/adminui/components/'
+        adminui: './components/adminui/components/',
+        leaflet: './components/leaflet/components/'
       },
       resourcePath: '/components/adminui/',
+      leafletResourcePath: '/components/leaflet/',
       readyEvent: new Event('ready')
     };
 
