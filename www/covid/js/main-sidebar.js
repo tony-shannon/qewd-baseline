@@ -73,6 +73,15 @@ export function main_sidebar_assembly() {
       }
     },
     {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Map 2 Detail',
+        icon: 'map',
+        contentPage: 'map-detail',
+        active: true
+      }
+    },
+    {
       componentName: 'adminui-sidebar-divider',
     },
     {

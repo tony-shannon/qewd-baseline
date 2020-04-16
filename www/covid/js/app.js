@@ -10,6 +10,7 @@ import {footer_assembly} from './footer.js';
 
 import {crud_assembly} from '../../components/adminui/components/adminui-crud.js';
 import {map_page_assembly} from './map.js';
+import {map_detail_assembly} from './map-detail1.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -811,6 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('stuff', crud_assembly(QEWD, StuffPageState)); 
 
     webComponents.addComponent('map_page', map_page_assembly());
+    webComponents.addComponent('map_detail', map_detail_assembly());
 
 
     webComponents.register('stuff', webComponents.components.stuff);
@@ -821,6 +823,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('admin', webComponents.components.admin);
 
     webComponents.register('map', webComponents.components.map_page);
+    webComponents.register('map-detail', webComponents.components.map_detail);
 
     // create the context for running the web components
 
