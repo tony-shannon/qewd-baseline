@@ -812,7 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('stuff', crud_assembly(QEWD, StuffPageState)); 
 
     webComponents.addComponent('map_page', map_page_assembly());
-    webComponents.addComponent('map_detail', map_detail_assembly());
+    webComponents.addComponent('map_detail', map_detail_assembly(QEWD));
 
 
     webComponents.register('stuff', webComponents.components.stuff);
@@ -870,6 +870,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
   });
+
+    // set up web components logging - to true or false
+    webComponents.setLog(true);
+    
+    
 
   QEWD.start({
     application: 'covid'
