@@ -6,11 +6,14 @@ module.exports = function(messageObj, session, send, finished) {
   
     let doc = this.db.use('geoJ');
   
+    let results = doc.getDocument(true);
+   // let resultsD = [];
+   //let docV = doc;
+    //console.log("DocValue is " + doc.value)
+    resultsD.push(doc);
   
-    let results = [];
-  
-    results.push(doc);
-  
-    finished({summary: results});
+    finished({summary: results,
+              //docValue: resultsD,
+              docB: doc});
   };
   
