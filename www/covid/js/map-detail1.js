@@ -486,7 +486,14 @@ export function map_detail_assembly(QEWD) {
                      id: feature.properties.id
                      }
                   });
-             //     return responseObj.message;
+
+                  console.log("got back a :");
+                  console.log(responseObj.type);
+                  console.log(responseObj.message);
+                  //let div = _this.getComponentByName('adminui-div', 'detail');
+                  div.setState({text: 'Qewd JSDB has set :' + responseObj.type + 'to the Card'});
+       
+                 // return responseObj.message;
             //    }
             }
 
