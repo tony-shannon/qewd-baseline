@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div><b>Local Storage Utility</b><br></br></div>
+
+
+<div id="result"></div>
+<div id="resultB"></div>
+
+
+<script>
+// Check browser support
+let userA = {
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
+    }
+  },
+  "phone": "1-770-736-8031 x56442",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets"
+  }
+}
+
+
+if (typeof(Storage) !== "undefined") {
+  // Store
+
+//########## Setting local data ##########
+ //simple assignment
+ localStorage.setItem("lastname", "Smith");
+ // localStorage.firstName="Tony";
+
+// assignment of object to localstorage
+ localStorage.setItem('userA', JSON.stringify(userA));
+//console.log(JSON.stringify(userA));
+//console.log(JSON.stringify(localStorage.user.value));
+
+//######### getting localdata ###########
+// simple retrieval
+var lastname = localStorage.getItem("lastname"); // Smith
+
+// getting object back from localstorage
+var userB = JSON.parse(localStorage.getItem('userA'));
+// amending that object
+userB.email = "Sincere@april.biz.com"
+// then taking another action
+console.log(userB.email); 
+
+
+
+  // Retrieve & assign to HTML #############
+ // simple retrieval
+  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+  //document.getElementById("resultB").innerHTML = localStorage.firstName;
+  document.getElementById("resultB").innerHTML = userB.email;
+} else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
+ //tidy up localStorage
+
+localStorage.removeItem('userA');
+localStorage.clear();
+</script>
+
+
+
+
+</body>
+</html>
