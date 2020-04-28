@@ -499,12 +499,33 @@ export function getConfigs(webComponents) {
       cardTitle: 'Blank Card',
       cardTitleColour: 'info',
       cardName: 'blank-card',
-      text: 'This is the Blank Page content....'
+      text: 'This is the Blank Page content....!'
     },
     hooks: ['DoThis']
   };
 
+ let hooks = {
+   'blank': {
+     DoThis: async function(){
+       console.log("In this hook");
+       //let _this=this;
+       //setTimeout(function(){
+        // _this.show();
+       //}, 5000);
+       
+       function onClickIT(e) {   
+        //console.log("Key is " + this.key + " & Name is " + this.name); // i can expect my keys here
+        console.log("That was a click");
+        //let div = _this.getComponentByName('adminui-div', 'detail');
+        //div.setState({text: 'added by event - from click from ' + this.name });
+        }
 
+
+
+     }
+   }
+
+ }
 
 
   let configs = {
@@ -526,8 +547,10 @@ export function getConfigs(webComponents) {
       forgot_password: forgot_password,
       page404: page404,
       blank: blank
-    }
+    },
+    hooks: hooks
   };
 
-  return configs;
+ // return {configs, hooks};
+ return configs;
 }
