@@ -199,6 +199,7 @@ $(document).ready(function() {
         type: 'drillDown',
         subscripts: subscripts
       };
+      console.log("msg to Qewd " + JSON.stringify(msg));
       EWD.send(msg, (responseObj) => {
         $('#drillDown-exists').text(responseObj.message.exists);
         $('#drillDown-hasValue').text(responseObj.message.hasValue);
@@ -208,6 +209,7 @@ $(document).ready(function() {
         }
         else {
           $('#drillDown-response').text(JSON.stringify(responseObj.message.json, null, 2));
+        console.log("back from qewd " + JSON.stringify(responseObj.message));
         }
       });
     });
