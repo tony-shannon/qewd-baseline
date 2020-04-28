@@ -500,8 +500,8 @@ export function getConfigs(webComponents) {
       cardTitleColour: 'info',
       cardName: 'blank-card',
       text: 'This is the Blank Page content....'
-    }//,
-    //hooks: ['DoThis']
+    },
+    hooks: ['DoThis']
   };
 
 
