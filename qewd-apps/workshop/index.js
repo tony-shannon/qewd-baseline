@@ -192,7 +192,7 @@ function editRecord2(id, recordObj, indexField, DocName, jsdb) {
 
 
   
-function getByIndexField2(Search, DocName, indexField, jsdb) {
+function getByIndexField2(Search, indexField, DocName,  jsdb) {
     var nodes = [];
     if (Search !== '') {
       // set up the Document Node objects we'll need to use
@@ -290,4 +290,4 @@ var user2= {
 //deleteRecord2(1, user, "email", "UserList", jsdb);
 //editRecord2(4, user2, "email", "UserList", jsdb);
 //getById("UserList", 1, jsdb);
-getByIndexField2("sin", "UserList", "email", jsdb)
+getByIndexField2("sin", "email","UserList",  jsdb)
