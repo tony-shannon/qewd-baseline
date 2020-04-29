@@ -1,13 +1,14 @@
-// Change the paths below if needed
-
 import {webComponents} from '../../mg-webComponents.js';
-import {QEWD} from '../../qewd-client.js';
+//import {QEWD} from '../../qewd-client.js';
+
+// import of localstore done in index.html with store.js tool/
+// available to all local JS files here, eg blank-page etc
 
 // import the individual component configuration files
 //   they can be maintained independently as a result
 
 import {define_login_modal} from './login-modal.js';
-import {define_logout_modal} from './logout-modal.js';
+//import {define_logout_modal} from './logout-modal.js';
 import {define_initial_sidebar} from './initial-sidebar.js';
 import {define_sidebar} from './sidebar.js';
 import {define_topbar} from './topbar.js';
@@ -35,11 +36,12 @@ import {crud_assembly} from '../../components/adminui/components/adminui-crud.js
 
 import {contentPage} from './content-page.js';
 
+
 document.addEventListener('DOMContentLoaded', function() {
 
-  QEWD.on('ewd-registered', function() {
+  //QEWD.on('ewd-registered', function() {
 
-    QEWD.log = true;
+    //QEWD.log = true;
 
     // register the custom component definition for contentPage
 
@@ -49,15 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
     //  this adds each component to webComponents.component
     //  and adds any hooks to webComponents.hooks
 
-    webComponents.addComponent('login_modal', define_login_modal(QEWD));
-    webComponents.addComponent('logout_modal', define_logout_modal(QEWD));
+    webComponents.addComponent('login_modal', define_login_modal());
+    //webComponents.addComponent('logout_modal', define_logout_modal());
     webComponents.addComponent('initial_sidebar', define_initial_sidebar());
     webComponents.addComponent('sidebar', define_sidebar());
-    webComponents.addComponent('topbar', define_topbar(QEWD));
+    webComponents.addComponent('topbar', define_topbar());
     webComponents.addComponent('footer', define_footer());
-    webComponents.addComponent('dashboard_page', define_dashboard_page(QEWD));
-    webComponents.addComponent('charts_page', define_charts_page(QEWD));
-    webComponents.addComponent('tables_page', define_tables_page(QEWD));
+    webComponents.addComponent('dashboard_page', define_dashboard_page());
+    webComponents.addComponent('charts_page', define_charts_page());
+    webComponents.addComponent('tables_page', define_tables_page());
     webComponents.addComponent('buttons_page', define_buttons_page());
     webComponents.addComponent('cards_page', define_cards_page());
     webComponents.addComponent('colours_page', define_colours_page());
@@ -69,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('forgot_password_page', define_forgot_password_page());
     webComponents.addComponent('page_404', define_404_page());
     webComponents.addComponent('blank_page', define_blank_page());
-    //webComponents.addComponent('users_page', define_users_page(QEWD));
-    webComponents.addComponent('map_page', define_map_page(QEWD));
-   // webComponents.addComponent('d3_page', define_d3_page(QEWD));
+    //webComponents.addComponent('users_page', define_users_page());
+    webComponents.addComponent('map_page', define_map_page());
+   // webComponents.addComponent('d3_page', define_d3_page());
 
     let userPageState = {
       name: 'users',
@@ -84,11 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
         btnTooltip: 'Add a New User',
         headers: ['Name', 'Email'],
         data_properties: ['name', 'email'],
-        qewd: {
-          getSummary: 'getUsers',
-          getDetail: 'getUserInfo',
-          delete: 'deleteUser'
-        },
+        //qewd: {
+        //  getSummary: 'getUsers',
+        ////  getDetail: 'getUserInfo',
+        // delete: 'deleteUser'
+        //},
         rowBtnIcon: 'user-edit',
         rowBtnColour: 'info',
         enableDelete: true,
@@ -201,13 +203,13 @@ document.addEventListener('DOMContentLoaded', function() {
       update: {
         btnText: 'Save',
         btnColour: 'warning',
-        qewd: {
-          save: 'updateUser'
-        }
+        //qewd: {
+        //  save: 'updateUser'
+        //}
       }
     };
 
-    webComponents.addComponent('users_page', crud_assembly(QEWD, userPageState));
+   // webComponents.addComponent('users_page', crud_assembly(QEWD, userPageState));
 
     // create the context for running the web components
 
@@ -230,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
       webComponents.loadGroup(components.sidebar, root.sidebarTarget, context);
       webComponents.loadGroup(components.topbar, root.topbarTarget, context);
       webComponents.loadGroup(components.dashboard_page, root.contentTarget, context);
-      webComponents.loadGroup(components.logout_modal, body, context);
+      // webComponents.loadGroup(components.logout_modal, body, context);
     }
     context.loadMainView = loadMainView;
 
@@ -268,10 +270,10 @@ document.addEventListener('DOMContentLoaded', function() {
     //  It is available to the admin-root component via the context object which
     //  includes the ready event object
 
-    document.addEventListener('ready', function() {
-      let modal = webComponents.getComponentByName('adminui-modal-root', 'modal-login');
-      modal.show();
-    });
+    //document.addEventListener('ready', function() {
+    //  let modal = webComponents.getComponentByName('adminui-modal-root', 'modal-login');
+    //  modal.show();
+    //});
     
     // now load up the initial view
 
@@ -282,10 +284,10 @@ document.addEventListener('DOMContentLoaded', function() {
       webComponents.loadGroup(components.footer, root.footerTarget, context);
     });
 
-  });
+  //});
 
-  QEWD.start({
-    application: 'demo'
-  });
+  //QEWD.start({
+  //  application: 'demo'
+  //});
 
 });
