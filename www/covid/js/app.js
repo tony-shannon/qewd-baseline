@@ -829,13 +829,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let context = {
       paths: {
-        adminui: './components/adminui/components/',
-        leaflet: './components/leaflet/components/'
+      adminui: './components/adminui',
+      leaflet: './components/leaflet'
       },
-      resourcePath: '/components/adminui/',
-      leafletResourcePath: '/components/leaflet/',
       readyEvent: new Event('ready')
-    };
+      };
 
     // this mainview function will be used by the login hook - it will pick it up
     // from the context object
