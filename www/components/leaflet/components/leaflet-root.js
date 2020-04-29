@@ -1,3 +1,33 @@
+/*
+
+ ----------------------------------------------------------------------------
+ | wc-leaflet: WebComponents Library for Leaflet Mapping Module              |
+ |                                                                           |
+ | Copyright (c) 2020 M/Gateway Developments Ltd,                            |
+ | Redhill, Surrey UK.                                                       |
+ | All rights reserved.                                                      |
+ |                                                                           |
+ | http://www.mgateway.com                                                   |
+ | Email: rtweed@mgateway.com                                                |
+ |                                                                           |
+ |                                                                           |
+ | Licensed under the Apache License, Version 2.0 (the "License");           |
+ | you may not use this file except in compliance with the License.          |
+ | You may obtain a copy of the License at                                   |
+ |                                                                           |
+ |     http://www.apache.org/licenses/LICENSE-2.0                            |
+ |                                                                           |
+ | Unless required by applicable law or agreed to in writing, software       |
+ | distributed under the License is distributed on an "AS IS" BASIS,         |
+ | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  |
+ | See the License for the specific language governing permissions and       |
+ |  limitations under the License.                                           |
+ ----------------------------------------------------------------------------
+
+ 17 April 2020
+
+*/
+
 export function load() {
 
   let componentName = 'leaflet-root';
@@ -35,6 +65,11 @@ export function load() {
       let _this = this;
       let prefix = '';
       if (this.context.leafletResourcePath) prefix = this.context.leafletResourcePath;
+      if (this.context.paths && this.context.paths.leaflet) {
+        prefix = this.context.paths.leaflet;
+        if (prefix[0] === '.') prefix = prefix.slice(1);
+      }
+      if (prefix !== '' && prefix.slice(-1) !== '/') prefix = prefix + '/';
 
       this.loadCSSFile(prefix + 'css/leaflet.css', function() {
         _this.loadJSFile(prefix + 'js/leaflet.js', function() {
@@ -49,7 +84,7 @@ export function load() {
       let fn = function() {
         _this.map = _this.leaflet.map(_this.rootElement.id).setView([lat, long], zoom);
         _this.leaflet.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery ï¿½ <a href="https://www.mapbox.com/">Mapbox</a>',
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           maxZoom: 18,
           id: 'mapbox/streets-v11',
           tileSize: 512,
