@@ -27,6 +27,7 @@ import {define_register_page} from './register-page.js';
 import {define_forgot_password_page} from './forgot-password-page.js';
 import {define_404_page} from './404-page.js';
 import {define_blank_page} from './blank-page.js';
+import {define_demo_page} from './demo-show.js';
 import {define_users_page} from './users.js';
 import {define_map_page} from './map.js';
 //import {define_d3_page} from './d3.js';
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('forgot_password_page', define_forgot_password_page());
     webComponents.addComponent('page_404', define_404_page());
     webComponents.addComponent('blank_page', define_blank_page());
+    webComponents.addComponent('demo_page', define_demo_page());
     //webComponents.addComponent('users_page', define_users_page());
     webComponents.addComponent('map_page', define_map_page());
    // webComponents.addComponent('d3_page', define_d3_page());
@@ -255,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('forgot_password', webComponents.components.forgot_password_page);
     webComponents.register('page404', webComponents.components.page_404);
     webComponents.register('blank', webComponents.components.blank_page);
+    webComponents.register('demo', webComponents.components.demo_page);
     webComponents.register('users', webComponents.components.users_page);
     webComponents.register('map', webComponents.components.map_page);
     //webComponents.register('d3', webComponents.components.d3_page);
