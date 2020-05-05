@@ -77,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('map_page', define_map_page());
    // webComponents.addComponent('d3_page', define_d3_page());
 
+    webComponents.setLog(true);
+
     let userPageState = {
       name: 'users',
       title: 'Users',
