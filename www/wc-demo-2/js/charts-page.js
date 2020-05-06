@@ -42,6 +42,7 @@ export function define_charts_page(QEWD) {
   let hooks = {
     'adminui-chart': {
       getChartData: function() {
+        let _this = this;
         let config = {
           type: 'doughnut',
           data: {
@@ -69,6 +70,35 @@ export function define_charts_page(QEWD) {
               display: false
             },
             cutoutPercentage: 80,
+            
+            onClick: (evt, item) => { // this is standard syntax for ChartJS events
+              console.log("evt is " + evt + " & item is: " + item ); // both of these are objects
+              
+              // as difficult to stringify item (circular object) found this replacer function which helps via cache
+              // https://stackoverflow.com/questions/11616630/how-can-i-print-a-circular-structure-in-a-json-like-format
+              var cache = [];
+              JSON.stringify(item, (key, value) => {
+                  if (typeof value === 'object' && value !== null) {
+                    // Duplicate reference found, discard key
+                    if (cache.includes(value)) return;
+
+                    // Store value in our collection
+                    cache.push(value);
+                  }
+                  return null;
+                  //return value;
+               });
+               console.log(cache); // we can inspect the cached object from here
+               cache = null; //
+
+               // we have used the cache view to inspect the chart object to log these ...
+               console.log("Chart Type = " + item[0]._chart.config.type);
+               let ix = item[0]._index;
+               console.log("ChartIndex = " + ix);
+               //console.log("Labels = " + item[0]._chart.config.data.labels); 
+               console.log("Label = " + item[0]._chart.config.data.labels[ix]);
+               console.log("Data = " + item[0]._chart.config.data.datasets[0].data[ix]);
+             }
           },
         };
 
