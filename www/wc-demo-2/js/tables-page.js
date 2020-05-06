@@ -43,13 +43,15 @@ export function define_tables_page(QEWD) {
     'adminui-datatables': {
       getTableData: async function() {
         let _this = this;
-        let responseObj = await QEWD.reply({
-          type: 'getTableData',
-          ref: this.name
-        });
-          let obj = responseObj.message.data;
-          _this.render(obj);
- 
+ //       let responseObj = await QEWD.reply({
+//          type: 'getTableData',
+ //         ref: this.name
+ //       });
+         // let obj = responseObj.message.data;
+         // _this.render(obj);
+          let obj2 = store.get('dataT');
+          _this.render(obj2);
+
           /*
           setTimeout(function() {
             console.log('xxxxx');
