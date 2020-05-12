@@ -35,6 +35,52 @@ export function define_charts_page(QEWD) {
             ]
           }
         ]
+      },
+
+      {
+        componentName: 'adminui-content-card',
+        state: {
+          name: 'chart-card-detail'
+          
+        },
+        children: [
+          {
+            componentName: 'adminui-content-card-header',
+            state: {
+              title: '2nd Card',
+              title_colour: 'warning'
+            }
+          },
+          {
+            componentName: 'adminui-content-card-body',
+            children: [
+              {
+                componentName: 'adminui-div',
+                state: {
+                  name: "chart-detail",
+                  text: "We will aim for text to go here"
+                }
+              }
+            ]
+          },
+          {
+            componentName: 'adminui-content-card-footer',
+            state: {
+              hidden: false
+            },
+            children: [
+              {
+                componentName: 'adminui-button',
+                state: {
+                  text: 'ClickIt',
+                  colour: 'success',
+                  cls: 'btn-block'
+                },
+                hooks: ['ButtonHandlerA']
+              }
+            ]
+          }
+        ]
       }
     ]
   };
@@ -98,6 +144,11 @@ export function define_charts_page(QEWD) {
                //console.log("Labels = " + item[0]._chart.config.data.labels); 
                console.log("Label = " + item[0]._chart.config.data.labels[ix]);
                console.log("Data = " + item[0]._chart.config.data.datasets[0].data[ix]);
+               let div = _this.getComponentByName('adminui-div', 'chart-detail');
+               //div.setState({text: 'added by event - from click from ' + cell.data()});
+               div.setState({text: 'Label :' + item[0]._chart.config.data.labels[ix] + " & Data :" + item[0]._chart.config.data.datasets[0].data[ix]});
+
+
              }
           },
         };

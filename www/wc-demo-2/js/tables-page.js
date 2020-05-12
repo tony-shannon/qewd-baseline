@@ -35,6 +35,51 @@ export function define_tables_page(QEWD) {
             ]
           }
         ]
+      },
+      {
+        componentName: 'adminui-content-card',
+        state: {
+          name: 'map-card-detail'
+          
+        },
+        children: [
+          {
+            componentName: 'adminui-content-card-header',
+            state: {
+              title: '2nd Card',
+              title_colour: 'warning'
+            }
+          },
+          {
+            componentName: 'adminui-content-card-body',
+            children: [
+              {
+                componentName: 'adminui-div',
+                state: {
+                  name: "table-detail",
+                  text: "We will aim for text to go here"
+                }
+              }
+            ]
+          },
+          {
+            componentName: 'adminui-content-card-footer',
+            state: {
+              hidden: false
+            },
+            children: [
+              {
+                componentName: 'adminui-button',
+                state: {
+                  text: 'ClickIt',
+                  colour: 'success',
+                  cls: 'btn-block'
+                },
+                hooks: ['ButtonHandlerA']
+              }
+            ]
+          }
+        ]
       }
     ]
   };
@@ -66,7 +111,15 @@ export function define_tables_page(QEWD) {
             console.log(this);
             console.log(cell);
             console.log(cell.index());
+            
+            //let row = cell.row();
+            let rowIx = cell.index().row;
+            console.log("rowIx = " + rowIx);
+            console.log(cell.row(rowIx).data());
             //cell.data('New Value');
+            let div = _this.getComponentByName('adminui-div', 'table-detail');
+            //div.setState({text: 'added by event - from click from ' + cell.data()});
+            div.setState({text: 'added by event - from click from ' + cell.row(rowIx).data()});
             //cell.draw();
           };
 
@@ -77,3 +130,8 @@ export function define_tables_page(QEWD) {
 
   return {component, hooks};
 };
+
+
+
+//let div = _this.getComponentByName('adminui-div', 'detail');
+//div.setState({text: 'added by event - from click from ' + this.name });
