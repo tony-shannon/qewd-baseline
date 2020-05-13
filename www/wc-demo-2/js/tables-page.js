@@ -94,7 +94,9 @@ export function define_tables_page(QEWD) {
  //       });
          // let obj = responseObj.message.data;
          // _this.render(obj);
-          let obj2 = store.get('dataT');
+          //let obj2 = store.get('dataT');
+          let obj2 = store.get('dataX');
+          console.log(obj2);
           _this.render(obj2);
 
           /*

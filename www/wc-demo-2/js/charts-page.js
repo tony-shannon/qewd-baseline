@@ -89,12 +89,16 @@ export function define_charts_page(QEWD) {
     'adminui-chart': {
       getChartData: function() {
         let _this = this;
+        let chartData = store.get('chartX');
+
         let config = {
           type: 'doughnut',
           data: {
-            labels: ["Direct", "Referral", "Social"],
+            //labels: ["Direct", "Referral", "Social"],
+            labels: chartData.labels,
             datasets: [{
-              data: [55, 30, 15],
+              //data: [55, 30, 15],
+              data: chartData.counts,
               backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
               hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
               hoverBorderColor: "rgba(234, 236, 244, 1)",

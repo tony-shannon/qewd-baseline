@@ -97,8 +97,24 @@ export function define_map_page() {
       getMap: async function() {
         let _this = this; // ? needed later?
 
+      await this.renderMap(53.355, -6.29, 11);
 
-        await this.renderMap(51.505, -0.09, 13);
+      let Data = store.get('dataX');
+
+      let userData = Data.data;
+
+      userData.forEach(function(user){
+        console.log ("map GPS for user is Lt " + user.address.geo.lat + " Lng " + user.address.geo.lng);
+        if (user.address.geo.lat === "undefined" || user.address.geo.lng === "undefined" ) {console.log ("found undefined")}
+        console.log(typeof user.address.geo.lat);
+        console.log(eval(user.address.geo.lat));
+        console.log(eval(user.address.geo.lng));
+        _this.setMarker(51.705, -0.07)
+        _this.setMarker(eval(user.address.geo.lat), eval(user.address.geo.lng))//.on('click', onClick);;
+      });
+     /* */
+
+      
         this.setMarker(51.505, -0.09).on('click', onClick);;
         console.log("this is in mapJS hook")
       

@@ -38,6 +38,208 @@ store.each(function(value, key) {
 console.log("or directly eg " + store.get('user_2').address.city);
 
 
+var dataSet_P = [
+  ["Mary Jones", "Female", 68, "Dublin", [53.3351813,-6.2911528,14]],
+  ["John Briggs", "Male", 78, "Dublin" , [53.335476,-6.283428,14]],
+  ["Will Murphy", "Male", 55, "Dublin", [53.335476,-6.283428, 14]],
+  ["Jimmy Jones", "Male", 65, "Dublin", [53.335476,-6.283428, 14]],
+  ["Yvonne Mullin", "Female",  36, "Dublin", [53.335476,-6.283428,14]] 
+];
+/**/
+
+var dataSet_p2 = [
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "age": 45,
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "53.3238572",
+        "lng": "-6.2847411"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "age": 55,
+    "address": {
+      "street": "Victor Plains",
+      "suite": "Suite 879",
+      "city": "Wisokyburgh",
+      "zipcode": "90566-7771",
+      "geo": {
+        "lat": "53.3528572",
+        "lng": "-6.2737411"
+      }
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": {
+      "name": "Deckow-Crist",
+      "catchPhrase": "Proactive didactic contingency",
+      "bs": "synergize scalable supply-chains"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "age": 65,
+    "address": {
+      "street": "Douglas Extension",
+      "suite": "Suite 847",
+      "city": "McKenziehaven",
+      "zipcode": "59590-4157",
+      "geo": {
+        "lat": "53.3928572",
+        "lng": "-6.2937411"
+      }
+    },
+    "phone": "1-463-123-4447",
+    "website": "ramiro.info",
+    "company": {
+      "name": "Romaguera-Jacobson",
+      "catchPhrase": "Face to face bifurcated interface",
+      "bs": "e-enable strategic applications"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org",
+    "age": 75,
+    "address": {
+      "street": "Hoeger Mall",
+      "suite": "Apt. 692",
+      "city": "South Elvis",
+      "zipcode": "53919-4257",
+      "geo": {
+        "lat": "53.3845784",
+        "lng": "-6.2544324"
+      }
+    },
+    "phone": "493-170-9623 x156",
+    "website": "kale.biz",
+    "company": {
+      "name": "Robel-Corkery",
+      "catchPhrase": "Multi-tiered zero tolerance productivity",
+      "bs": "transition cutting-edge web services"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "age": 85,
+    "address": {
+      "street": "Skiles Walks",
+      "suite": "Suite 351",
+      "city": "Roscoeview",
+      "zipcode": "33263",
+      "geo": {
+        "lat": "53.3128572",
+        "lng": "-6.2137411"
+      }
+    },
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": {
+      "name": "Keebler LLC",
+      "catchPhrase": "User-centric fault-tolerant solution",
+      "bs": "revolutionize end-to-end systems"
+    }
+  }
+]
+
+
+var chartLabels = ["1-50", "51-75", "76-100"]
+
+
+
+function chartfromData (data, labels)
+{
+  var chartData = {
+    labels,
+    age1_50: 0,
+    age51_75: 0,
+    age76_100: 0,
+    counts: 0
+  };
+// take data in and run over it
+//set up the labels
+//for  each label in labels(array)
+data.forEach(function(user){
+  console.log("UserAge is " + user.age)
+  if (user.age > 75) 
+  {
+   chartData.age76_100++;
+  }
+  else if (user.age <51)
+  {
+    chartData.age1_50++;
+  }
+  else if ((user.age >50 && user.age < 76)){
+   chartData.age51_75++;
+  }
+});
+
+chartData.counts = [chartData.age1_50, chartData.age51_75, chartData.age76_100];
+// go over the data with a counter looking for unique values in that array of objects eg city names
+//loop thru the array
+// and count those variable that should be counted
+ 
+
+
+  return chartData;
+
+}
+
+store.set('chartX', chartfromData(dataSet_p2, chartLabels)); 
+console.log(chartfromData(dataSet_p2, chartLabels));
+
+
+var dataSet_PX=  {
+  data: dataSet_p2,
+  columns: [
+    { title: "ID",
+      "data": "id" },
+    { title: "Name",
+      "data": "name" },
+    { title: "Address",
+      "data": "address.city" },
+    { title: "Age",
+      "data": "age" },
+    { title: "Geo_Lat",
+      "data": "address.geo.lat"},
+    { title: "Geo_Lng",
+      "data": "address.geo.lng"}
+    ],
+  //scrollX: true
+};
+
+store.set('dataX', dataSet_PX); 
+
+console.log("#### u2 is " + dataSet_p2[1]);
+console.log("eval this gps = " + eval(dataSet_p2[1].address.geo.lat));
 
 var dataSet = [
   [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
@@ -96,3 +298,6 @@ store.set('dataT', dataT)
 store.each(function(value, key) {
 	console.log(key, '==', value)
 })
+
+
+//store.clearAll();
