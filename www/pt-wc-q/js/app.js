@@ -28,7 +28,7 @@ import {define_404_page} from './404-page.js';
 import {define_blank_page} from './blank-page.js';
 import {define_users_page} from './users.js';
 import {define_map_page} from './map.js';
-import {define_d3_page} from './d3.js';
+//import {define_d3_page} from './d3.js';
 
 import {crud_assembly} from '../../components/adminui/components/adminui-crud.js';
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('blank_page', define_blank_page());
     //webComponents.addComponent('users_page', define_users_page(QEWD));
     webComponents.addComponent('map_page', define_map_page(QEWD));
-    webComponents.addComponent('d3_page', define_d3_page(QEWD));
+   // webComponents.addComponent('d3_page', define_d3_page(QEWD));
 
     let userPageState = {
       name: 'users',
@@ -214,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let context = {
       paths: {
         adminui: './components/adminui/',
-        leaflet: './components/leaflet/',
-        d3: './components/d3'
+        leaflet: './components/leaflet/'//,
+       /// d3: './components/d3'
       },
       readyEvent: new Event('ready')
     };
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('blank', webComponents.components.blank_page);
     webComponents.register('users', webComponents.components.users_page);
     webComponents.register('map', webComponents.components.map_page);
-    webComponents.register('d3', webComponents.components.d3_page);
+   // webComponents.register('d3', webComponents.components.d3_page);
 
     // set up the initial display prior to login
 
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   QEWD.start({
-    application: 'demo'
+    application: 'pt-wc-q'
   });
 
 });
