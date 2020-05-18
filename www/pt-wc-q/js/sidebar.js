@@ -191,7 +191,23 @@ export function define_sidebar() {
       state: {
         title: 'Users',
         icon: 'users',
-        contentPage: 'users'
+        contentPage: 'users_'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Medications',
+        icon: 'users',
+        contentPage: 'medications_'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Diagnosis',
+        icon: 'users',
+        contentPage: 'diagnosis_'
       }
     },
     {

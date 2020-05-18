@@ -26,13 +26,15 @@ import {define_register_page} from './register-page.js';
 import {define_forgot_password_page} from './forgot-password-page.js';
 import {define_404_page} from './404-page.js';
 import {define_blank_page} from './blank-page.js';
-import {define_users_page} from './users.js';
-import {define_medications_page} from './medications.js'
+//import {define_users_page} from './users.js';
+//import {define_medications_page} from './medications.js'
 import {define_map_page} from './map.js';
 //import {define_d3_page} from './d3.js';
 
 import {crud_assembly} from '../../components/adminui/components/adminui-crud.js';
-
+import {userPageState} from './user_state.js';
+import {medicationsPageState} from './medications_page_state.js';
+import {diagnosisPageState} from './diagnosis_page_state.js'
 
 import {contentPage} from './content-page.js';
 
@@ -72,11 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('forgot_password_page', define_forgot_password_page());
     webComponents.addComponent('page_404', define_404_page());
     webComponents.addComponent('blank_page', define_blank_page());
-    //webComponents.addComponent('users_page', define_users_page(QEWD));
     webComponents.addComponent('map_page', define_map_page(QEWD));
    // webComponents.addComponent('d3_page', define_d3_page(QEWD));
 
+   /*
     let userPageState = {
+      assemblyName: 'users',
       name: 'users',
       title: 'Users',
       summary: {
@@ -209,11 +212,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     };
- 
-    webComponents.addComponent('users_page', crud_assembly(QEWD, userPageState));
+ */
 
+    webComponents.addComponent('users', crud_assembly(QEWD, userPageState));
+// when invoking addComponent for crud_assembly - use the name from the assemblyName aspect of the State
 
+/*
     let medicationsPageState = {
+      assemblyName: 'medications',
       name: 'medications',
       title: 'Medications',
       summary: {
@@ -346,8 +352,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     };
+*/
+    webComponents.addComponent('diagnosis', crud_assembly(QEWD, diagnosisPageState));
+    webComponents.addComponent('medications', crud_assembly(QEWD, medicationsPageState));
 
-    webComponents.addComponent('medications_page', crud_assembly(QEWD, medicationsPageState));
+    // when invoking addComponent for crud_assembly - use the name from the assemblyName aspect of the State
 /* 
     */ 
   
@@ -396,8 +405,9 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('forgot_password', webComponents.components.forgot_password_page);
     webComponents.register('page404', webComponents.components.page_404);
     webComponents.register('blank', webComponents.components.blank_page);
-    webComponents.register('users', webComponents.components.users_page);
-  //  webComponents.register('medications', webComponents.components.medications_page);
+    webComponents.register('users_', webComponents.components.users);
+    webComponents.register('medications_', webComponents.components.medications);
+    webComponents.register('diagnosis_', webComponents.components.diagnosis);
     webComponents.register('map', webComponents.components.map_page);
    // webComponents.register('d3', webComponents.components.d3_page);
 
