@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
  
     webComponents.addComponent('users_page', crud_assembly(QEWD, userPageState));
 
-/* 
+
     let medicationsPageState = {
       name: 'medications',
       title: 'Medications',
@@ -348,7 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     webComponents.addComponent('medications_page', crud_assembly(QEWD, medicationsPageState));
-*/ 
+/* 
+    */ 
   
     // create the context for running the web components
 
