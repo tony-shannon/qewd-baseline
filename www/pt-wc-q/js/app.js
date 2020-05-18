@@ -27,6 +27,7 @@ import {define_forgot_password_page} from './forgot-password-page.js';
 import {define_404_page} from './404-page.js';
 import {define_blank_page} from './blank-page.js';
 import {define_users_page} from './users.js';
+import {define_medications_page} from './medications.js'
 import {define_map_page} from './map.js';
 //import {define_d3_page} from './d3.js';
 
@@ -34,6 +35,8 @@ import {crud_assembly} from '../../components/adminui/components/adminui-crud.js
 
 
 import {contentPage} from './content-page.js';
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -206,9 +209,147 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     };
-
+ 
     webComponents.addComponent('users_page', crud_assembly(QEWD, userPageState));
 
+/* 
+    let medicationsPageState = {
+      name: 'medications',
+      title: 'Medications',
+      summary: {
+        title: 'Current Meds',
+        titleColour: 'info',
+        btnIcon: 'user-plus',
+        btnColour: 'success',
+        btnTooltip: 'Add a New Med',
+        headers: ['Name', 'Email'],
+        data_properties: ['name', 'email'],
+        qewd: {
+          getSummary: 'getMedications',
+          getDetail: 'getMedicationInfo',
+          delete: 'deleteMedication'
+        },
+        rowBtnIcon: 'user-edit',
+        rowBtnColour: 'info',
+        enableDelete: true,
+        deleteConfirmDisplayColumn: 0
+      },
+      detail: {
+        cardWidth: '500px',
+        newRecordTitle: 'Enter New User',
+        titleColour: 'info',
+        btnIcon: 'user-cog',
+        btnColour: 'success',
+        btnTooltip: 'Edit User Details',
+        title_data_property: 'name',
+        fields: [
+          {
+            name: 'name',
+            data_property: 'name',
+            label: 'Name',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'email',
+            data_property: 'email',
+            label: 'Email',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'username',
+            data_property: 'username',
+            label: 'Username',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'phone',
+            data_property: 'phone',
+            label: 'Telephone',
+            type: 'text',
+            labelWidth: 4
+          },
+          {
+            name: 'gender',
+            data_property: 'gender',
+            label: 'Gender',
+            type: 'select',
+            labelWidth: 4,
+            options: [
+              {text: 'Male', value: 'm'},
+              {text: 'Female', value: 'f'},
+              {text: 'Not Specified', value: 'x'}
+            ]
+          },
+          {
+            name: 'userType',
+            data_property: 'userType',
+            label: 'Type of User',
+            type: 'radios',
+            radios: [
+              {text: 'Administrator', value: 'admin'},
+              {text: 'Public', value: 'public'},
+              {text: 'Not Specified', value: 'x'}
+            ]
+          },
+          {
+            name: 'roles',
+            data_property: 'roles',
+            label: 'Roles',
+            type: 'checkboxes',
+            checkboxes: [
+              {text: 'Doctor', value: 'doctor'},
+              {text: 'Patient', value: 'patient'},
+              {text: 'Carer', value: 'carer'},
+              {text: 'Consultant', value: 'consultant'}
+            ]
+          },
+          {
+            name: 'age',
+            data_property: 'age',
+            label: 'Age',
+            type: 'range',
+            labelWidth: 3,
+            min: 0,
+            max: 100,
+            marker: true
+          },
+          {
+            name: 'prevEmp',
+            data_property: 'prevEmp',
+            label: 'Previous Employers',
+            type: 'multiselect',
+            options: [
+              {text: 'NHS', value: 'nhs'},
+              {text: 'Private Hospital', value: 'private'},
+              {text: 'Community', value: 'community'},
+              {text: 'GP Practice', value: 'gp'}
+            ]
+          },
+          {
+            name: 'comments',
+            data_property: 'comments',
+            label: 'Comments',
+            type: 'textarea',
+            labelWidth: 4,
+            height: 6
+          }
+        ]
+      },
+      update: {
+        btnText: 'Save',
+        btnColour: 'warning',
+        qewd: {
+          save: 'updateUser'
+        }
+      }
+    };
+
+    webComponents.addComponent('medications_page', crud_assembly(QEWD, medicationsPageState));
+*/ 
+  
     // create the context for running the web components
 
     let context = {
@@ -234,7 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     context.loadMainView = loadMainView;
 
-    //webComponents.setLog(true);
+    webComponents.setLog(true);
+    console.log("log should be on");
 
     // register the content page configurations, ready for lazy loading on demand
     //  this makes them accessible via the contentPage state values (see sidebar component)
@@ -254,6 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('page404', webComponents.components.page_404);
     webComponents.register('blank', webComponents.components.blank_page);
     webComponents.register('users', webComponents.components.users_page);
+  //  webComponents.register('medications', webComponents.components.medications_page);
     webComponents.register('map', webComponents.components.map_page);
    // webComponents.register('d3', webComponents.components.d3_page);
 
