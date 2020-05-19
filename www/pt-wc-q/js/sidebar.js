@@ -51,24 +51,7 @@ export function define_sidebar() {
                 text: 'Cards',
                 contentPage: 'cards'
               }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      componentName: 'adminui-sidebar-nav-collapse-menu',
-      state: {
-        heading: 'Custom Utilities',
-        icon: 'wrench'
-      },
-      children: [
-        {
-          componentName: 'adminui-sidebar-nav-menu-popup',
-          state: {
-            title: 'Custom Utilities'
-          },
-          children: [
+            },
             {
               componentName: 'adminui-sidebar-nav-menu-popup-option',
               state: {
@@ -98,6 +81,52 @@ export function define_sidebar() {
               }
             }
           ]
+        },
+        {
+          componentName: 'adminui-sidebar-nav-menu-popup',
+          state: {
+            title: 'More components'
+          },
+          children: [
+            
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Login',
+                contentPage: 'login'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Register',
+                contentPage: 'register'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Forgot Password',
+                contentPage: 'forgot_password'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: '404 Page',
+                contentPage: 'page404'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Blank Page',
+                contentPage: 'blank'
+              }
+            }
+
+          ]
+
         }
       ]
     },
@@ -107,8 +136,92 @@ export function define_sidebar() {
     {
       componentName: 'adminui-sidebar-heading',
       state: {
-        title: 'Addons'
+        title: 'Core'
       }
+    },
+ 
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Charts',
+        icon: 'chart-area',
+        contentPage: 'charts'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Tables',
+        icon: 'table',
+        contentPage: 'tables'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Patients',
+        icon: 'users',
+        contentPage: 'patients'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Contacts',
+        icon: 'users',
+        contentPage: 'contacts'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Events',
+        icon: 'users',
+        contentPage: 'events'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Medications',
+        icon: 'users',
+        contentPage: 'medications'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Diagnosis',
+        icon: 'users',
+        contentPage: 'diagnosis'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Allergies',
+        icon: 'users',
+        contentPage: 'allergies'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Vaccinations',
+        icon: 'users',
+        contentPage: 'vaccinations'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-nav-item',
+      state: {
+        title: 'Vitals',
+        icon: 'users',
+        contentPage: 'vitals'
+      }
+    },
+    {
+      componentName: 'adminui-sidebar-divider',
     },
     {
       componentName: 'adminui-sidebar-nav-collapse-menu',
@@ -165,66 +278,33 @@ export function define_sidebar() {
                 text: 'Blank Page',
                 contentPage: 'blank'
               }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Map Page',
+                contentPage: 'map'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                text: 'Users Page - to DB',
+                contentPage: 'users_'
+              }
+            },
+            {
+              componentName: 'adminui-sidebar-nav-menu-popup-option',
+              state: {
+                title: 'Node Editor',
+                icon: 'map',
+                text: 'D3 page',
+                contentPage: 'd3'
+              }
             }
           ]
         }
       ]
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Charts',
-        icon: 'chart-area',
-        contentPage: 'charts'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Tables',
-        icon: 'table',
-        contentPage: 'tables'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Users',
-        icon: 'users',
-        contentPage: 'users_'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Medications',
-        icon: 'users',
-        contentPage: 'medications_'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Diagnosis',
-        icon: 'users',
-        contentPage: 'diagnosis_'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Map',
-        icon: 'map',
-        contentPage: 'map'
-      }
-    },
-    {
-      componentName: 'adminui-sidebar-nav-item',
-      state: {
-        title: 'Node Editor',
-        icon: 'map',
-        contentPage: 'd3'
-      }
     },
     {
       componentName: 'adminui-sidebar-divider',

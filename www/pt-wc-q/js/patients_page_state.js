@@ -1,19 +1,19 @@
-let userPageState = {
-    assemblyName: 'users',
-    name: 'users',
-    title: 'Users',
+let patientsPageState = {
+    assemblyName: 'patients',
+    name: 'patients',
+    title: 'Patients',
     summary: {
-      title: 'Users',
+      title: 'Patients',
       titleColour: 'info',
       btnIcon: 'user-plus',
       btnColour: 'success',
-      btnTooltip: 'Add a New User',
+      btnTooltip: 'Add a New Patient',
       headers: ['Name', 'Email'],
       data_properties: ['name', 'email'],
       qewd: {
-        getSummary: 'getUsers',
-        getDetail: 'getUserInfo',
-        delete: 'deleteUser'
+        getSummary: 'getPatients',
+        getDetail: 'getPatientInfo',
+        delete: 'deletePatient'
       },
       rowBtnIcon: 'user-edit',
       rowBtnColour: 'info',
@@ -22,11 +22,11 @@ let userPageState = {
     },
     detail: {
       cardWidth: '500px',
-      newRecordTitle: 'Enter New User',
+      newRecordTitle: 'Enter New Patient',
       titleColour: 'info',
       btnIcon: 'user-cog',
       btnColour: 'success',
-      btnTooltip: 'Edit User Details',
+      btnTooltip: 'Edit Patient Details',
       title_data_property: 'name',
       fields: [
         {
@@ -128,9 +128,9 @@ let userPageState = {
       btnText: 'Save',
       btnColour: 'warning',
       qewd: {
-        save: 'updateUser'
+        save: 'updatePatient'
       }
     }
   };
 
-  export {userPageState};
+  export {patientsPageState};

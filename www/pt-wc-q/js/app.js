@@ -33,10 +33,17 @@ import {define_map_page} from './map.js';
 
 import {crud_assembly} from '../../components/adminui/components/adminui-crud.js';
 import {userPageState} from './user_state.js';
+
+import {patientsPageState} from './patients_page_state.js'
+import {contactsPageState} from './contacts_page_state.js';
 import {medicationsPageState} from './medications_page_state.js';
 import {diagnosisPageState} from './diagnosis_page_state.js'
-
+import {allergiesPageState} from './allergies_page_state.js'
+import {vaccinationsPageState} from './vaccinations_page_state.js'
+import {vitalsPageState} from './vitals_page_state.js'
+import {eventsPageState} from './events_page_state.js'
 import {contentPage} from './content-page.js';
+//import { contactsPageState } from './contacts_page_state.js';
 
 
 
@@ -77,285 +84,18 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.addComponent('map_page', define_map_page(QEWD));
    // webComponents.addComponent('d3_page', define_d3_page(QEWD));
 
-   /*
-    let userPageState = {
-      assemblyName: 'users',
-      name: 'users',
-      title: 'Users',
-      summary: {
-        title: 'Current Users',
-        titleColour: 'info',
-        btnIcon: 'user-plus',
-        btnColour: 'success',
-        btnTooltip: 'Add a New User',
-        headers: ['Name', 'Email'],
-        data_properties: ['name', 'email'],
-        qewd: {
-          getSummary: 'getUsers',
-          getDetail: 'getUserInfo',
-          delete: 'deleteUser'
-        },
-        rowBtnIcon: 'user-edit',
-        rowBtnColour: 'info',
-        enableDelete: true,
-        deleteConfirmDisplayColumn: 0
-      },
-      detail: {
-        cardWidth: '500px',
-        newRecordTitle: 'Enter New User',
-        titleColour: 'info',
-        btnIcon: 'user-cog',
-        btnColour: 'success',
-        btnTooltip: 'Edit User Details',
-        title_data_property: 'name',
-        fields: [
-          {
-            name: 'name',
-            data_property: 'name',
-            label: 'Name',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'email',
-            data_property: 'email',
-            label: 'Email',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'username',
-            data_property: 'username',
-            label: 'Username',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'phone',
-            data_property: 'phone',
-            label: 'Telephone',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'gender',
-            data_property: 'gender',
-            label: 'Gender',
-            type: 'select',
-            labelWidth: 4,
-            options: [
-              {text: 'Male', value: 'm'},
-              {text: 'Female', value: 'f'},
-              {text: 'Not Specified', value: 'x'}
-            ]
-          },
-          {
-            name: 'userType',
-            data_property: 'userType',
-            label: 'Type of User',
-            type: 'radios',
-            radios: [
-              {text: 'Administrator', value: 'admin'},
-              {text: 'Public', value: 'public'},
-              {text: 'Not Specified', value: 'x'}
-            ]
-          },
-          {
-            name: 'roles',
-            data_property: 'roles',
-            label: 'Roles',
-            type: 'checkboxes',
-            checkboxes: [
-              {text: 'Doctor', value: 'doctor'},
-              {text: 'Patient', value: 'patient'},
-              {text: 'Carer', value: 'carer'},
-              {text: 'Consultant', value: 'consultant'}
-            ]
-          },
-          {
-            name: 'age',
-            data_property: 'age',
-            label: 'Age',
-            type: 'range',
-            labelWidth: 3,
-            min: 0,
-            max: 100,
-            marker: true
-          },
-          {
-            name: 'prevEmp',
-            data_property: 'prevEmp',
-            label: 'Previous Employers',
-            type: 'multiselect',
-            options: [
-              {text: 'NHS', value: 'nhs'},
-              {text: 'Private Hospital', value: 'private'},
-              {text: 'Community', value: 'community'},
-              {text: 'GP Practice', value: 'gp'}
-            ]
-          },
-          {
-            name: 'comments',
-            data_property: 'comments',
-            label: 'Comments',
-            type: 'textarea',
-            labelWidth: 4,
-            height: 6
-          }
-        ]
-      },
-      update: {
-        btnText: 'Save',
-        btnColour: 'warning',
-        qewd: {
-          save: 'updateUser'
-        }
-      }
-    };
- */
-
-    webComponents.addComponent('users', crud_assembly(QEWD, userPageState));
+      webComponents.addComponent('users', crud_assembly(QEWD, userPageState));
 // when invoking addComponent for crud_assembly - use the name from the assemblyName aspect of the State
 
-/*
-    let medicationsPageState = {
-      assemblyName: 'medications',
-      name: 'medications',
-      title: 'Medications',
-      summary: {
-        title: 'Current Meds',
-        titleColour: 'info',
-        btnIcon: 'user-plus',
-        btnColour: 'success',
-        btnTooltip: 'Add a New Med',
-        headers: ['Name', 'Email'],
-        data_properties: ['name', 'email'],
-        qewd: {
-          getSummary: 'getMedications',
-          getDetail: 'getMedicationInfo',
-          delete: 'deleteMedication'
-        },
-        rowBtnIcon: 'user-edit',
-        rowBtnColour: 'info',
-        enableDelete: true,
-        deleteConfirmDisplayColumn: 0
-      },
-      detail: {
-        cardWidth: '500px',
-        newRecordTitle: 'Enter New User',
-        titleColour: 'info',
-        btnIcon: 'user-cog',
-        btnColour: 'success',
-        btnTooltip: 'Edit User Details',
-        title_data_property: 'name',
-        fields: [
-          {
-            name: 'name',
-            data_property: 'name',
-            label: 'Name',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'email',
-            data_property: 'email',
-            label: 'Email',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'username',
-            data_property: 'username',
-            label: 'Username',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'phone',
-            data_property: 'phone',
-            label: 'Telephone',
-            type: 'text',
-            labelWidth: 4
-          },
-          {
-            name: 'gender',
-            data_property: 'gender',
-            label: 'Gender',
-            type: 'select',
-            labelWidth: 4,
-            options: [
-              {text: 'Male', value: 'm'},
-              {text: 'Female', value: 'f'},
-              {text: 'Not Specified', value: 'x'}
-            ]
-          },
-          {
-            name: 'userType',
-            data_property: 'userType',
-            label: 'Type of User',
-            type: 'radios',
-            radios: [
-              {text: 'Administrator', value: 'admin'},
-              {text: 'Public', value: 'public'},
-              {text: 'Not Specified', value: 'x'}
-            ]
-          },
-          {
-            name: 'roles',
-            data_property: 'roles',
-            label: 'Roles',
-            type: 'checkboxes',
-            checkboxes: [
-              {text: 'Doctor', value: 'doctor'},
-              {text: 'Patient', value: 'patient'},
-              {text: 'Carer', value: 'carer'},
-              {text: 'Consultant', value: 'consultant'}
-            ]
-          },
-          {
-            name: 'age',
-            data_property: 'age',
-            label: 'Age',
-            type: 'range',
-            labelWidth: 3,
-            min: 0,
-            max: 100,
-            marker: true
-          },
-          {
-            name: 'prevEmp',
-            data_property: 'prevEmp',
-            label: 'Previous Employers',
-            type: 'multiselect',
-            options: [
-              {text: 'NHS', value: 'nhs'},
-              {text: 'Private Hospital', value: 'private'},
-              {text: 'Community', value: 'community'},
-              {text: 'GP Practice', value: 'gp'}
-            ]
-          },
-          {
-            name: 'comments',
-            data_property: 'comments',
-            label: 'Comments',
-            type: 'textarea',
-            labelWidth: 4,
-            height: 6
-          }
-        ]
-      },
-      update: {
-        btnText: 'Save',
-        btnColour: 'warning',
-        qewd: {
-          save: 'updateUser'
-        }
-      }
-    };
-*/
+    webComponents.addComponent('patients', crud_assembly(QEWD, patientsPageState));
+   
+    webComponents.addComponent('contacts', crud_assembly(QEWD, contactsPageState));
     webComponents.addComponent('diagnosis', crud_assembly(QEWD, diagnosisPageState));
     webComponents.addComponent('medications', crud_assembly(QEWD, medicationsPageState));
-
+    webComponents.addComponent('allergies', crud_assembly(QEWD, allergiesPageState));
+    webComponents.addComponent('vaccinations', crud_assembly(QEWD, vaccinationsPageState));
+    webComponents.addComponent('vitals', crud_assembly(QEWD, vitalsPageState));
+    webComponents.addComponent('events', crud_assembly(QEWD, eventsPageState));
     // when invoking addComponent for crud_assembly - use the name from the assemblyName aspect of the State
 /* 
     */ 
@@ -405,9 +145,18 @@ document.addEventListener('DOMContentLoaded', function() {
     webComponents.register('forgot_password', webComponents.components.forgot_password_page);
     webComponents.register('page404', webComponents.components.page_404);
     webComponents.register('blank', webComponents.components.blank_page);
-    webComponents.register('users_', webComponents.components.users);
-    webComponents.register('medications_', webComponents.components.medications);
-    webComponents.register('diagnosis_', webComponents.components.diagnosis);
+    webComponents.register('users', webComponents.components.users);
+    
+    webComponents.register('patients', webComponents.components.patients);
+   
+
+    webComponents.register('contacts', webComponents.components.contacts);
+    webComponents.register('medications', webComponents.components.medications);
+    webComponents.register('diagnosis', webComponents.components.diagnosis);
+    webComponents.register('allergies', webComponents.components.allergies);
+    webComponents.register('vaccinations', webComponents.components.vaccinations);
+    webComponents.register('vitals', webComponents.components.vitals);
+    webComponents.register('events', webComponents.components.events);
     webComponents.register('map', webComponents.components.map_page);
    // webComponents.register('d3', webComponents.components.d3_page);
 

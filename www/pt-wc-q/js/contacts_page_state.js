@@ -1,19 +1,19 @@
-let userPageState = {
-    assemblyName: 'users',
-    name: 'users',
-    title: 'Users',
+let contactsPageState = {
+    assemblyName: 'contacts',
+    name: 'contacts',
+    title: 'Contacts',
     summary: {
-      title: 'Users',
+      title: 'Contacts:',
       titleColour: 'info',
       btnIcon: 'user-plus',
       btnColour: 'success',
-      btnTooltip: 'Add a New User',
+      btnTooltip: 'Add a New Contact',
       headers: ['Name', 'Email'],
       data_properties: ['name', 'email'],
       qewd: {
-        getSummary: 'getUsers',
-        getDetail: 'getUserInfo',
-        delete: 'deleteUser'
+        getSummary: 'getContacts',
+        getDetail: 'getContactInfo',
+        delete: 'deleteContact'
       },
       rowBtnIcon: 'user-edit',
       rowBtnColour: 'info',
@@ -22,11 +22,11 @@ let userPageState = {
     },
     detail: {
       cardWidth: '500px',
-      newRecordTitle: 'Enter New User',
+      newRecordTitle: 'Enter New Contact',
       titleColour: 'info',
       btnIcon: 'user-cog',
       btnColour: 'success',
-      btnTooltip: 'Edit User Details',
+      btnTooltip: 'Edit Contact Details',
       title_data_property: 'name',
       fields: [
         {
@@ -128,9 +128,9 @@ let userPageState = {
       btnText: 'Save',
       btnColour: 'warning',
       qewd: {
-        save: 'updateUser'
+        save: 'updateContact'
       }
     }
   };
 
-  export {userPageState};
+  export {contactsPageState};
