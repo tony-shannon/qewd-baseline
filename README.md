@@ -13,12 +13,14 @@ Google Group for discussions, support, advice etc: [http://groups.google.co.uk/g
 This repository provides a pre-configured, minimal set-up on which you can begin
 developing your APIs and/or back-end logic/message handlers for your interactive applications.
 
-It supports two modes of operation:
+It supports three modes of operation:
 
 1) A Dockerised version of QEWD that will run on any Linux system or on a Raspberry Pi
 
 2) A version that will run on the InterSystems 
 [AWS Community Edition of IRIS](https://aws.amazon.com/marketplace/pp/B07MSHYLF1?qid=1575041206953&sr=0-1&ref_=srh_res_product_title)
+
+3) A version that will run QEWD with Cach&eacute; or IRIS natively on Windows
 
 This repository also contains in-depth tutorials that will teach you how to build QEWD-based:
 
@@ -51,7 +53,9 @@ JavaScript framework.
 
 # Getting Started
 
-For the IRIS / AWS Version, see [these instructions](./IRIS.md).
+- For the IRIS Community AWS Version, see [these instructions](./IRIS.md) and then skip to the next section.
+
+- If you're running Cach&eacute; or IRIS natively on Windows, see [these instructions](./IRIS-WINDOWS.md) and then skip to the next section.
 
 Otherwise, the simplest way to work with QEWD is to use the pre-built Docker version which will run on
 any Linux system or even on a Raspberry Pi.
@@ -91,7 +95,7 @@ To stop the Docker Container, you should always use the command:
 This cleanly and safely shuts down the database-connected QEWD Worker Processes
 
 
-The QEWD-baseline Folder Structure
+# The QEWD-baseline Folder Structure
 
 You'll see the following folders in your QEWD-baseline directory:
 
