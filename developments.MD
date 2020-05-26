@@ -11,3 +11,14 @@ So remember to clear those and run the install script if needs be
 Session Data storage
 added Session functionality inc storing of data with session value and getting it back
 see www/qewd-ws-demo  qewd-apps/qewd-ws-demo/qewd-session-t2
+
+
+remember that we set single value with 
+session.data.$('sessionStarWarsHero').value = "R2D2";  
+and get that data with
+session.data.$('sessionStarWarsHero').value 
+
+but we set object to session data with
+session.data.$('sessionStarWarsWarrior').setDocument(data2session);  
+and get with
+session.data.$('sessionStarWarsWarrior').getDocument()
