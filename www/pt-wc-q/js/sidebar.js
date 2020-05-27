@@ -290,7 +290,7 @@ export function define_sidebar() {
               componentName: 'adminui-sidebar-nav-menu-popup-option',
               state: {
                 text: 'Users Page - to DB',
-                contentPage: 'users_'
+                contentPage: 'users'
               }
             },
             {
