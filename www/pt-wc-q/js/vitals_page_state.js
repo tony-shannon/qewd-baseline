@@ -33,28 +33,28 @@ let vitalsPageState = {
           name: 'heartrate',
           data_property: 'heartrate',
           label: 'Heart Rate',
-          type: 'number',
+          type: 'text',
           labelWidth: 4
         },
         {
             name: 'resprate',
             data_property: 'resprate',
             label: 'Resp Rate',
-            type: 'number',
+            type: 'text',
             labelWidth: 4
         },
         {
           name: 'systolic_bp',
           data_property: 'systolic_bp',
           label: 'Systolic BP',
-          type: 'number',
+          type: 'text',
           labelWidth: 4
         },
         {
           name: 'score',
           data_property: 'score',
           label: 'Score',
-          type: 'number',
+          type: 'textarea',
           labelWidth: 4,
           height: 6
         }
